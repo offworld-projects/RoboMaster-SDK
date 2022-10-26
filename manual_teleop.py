@@ -2,21 +2,21 @@
 
 from robomaster import robot
 
-x_val = 0.2
+x_val = 1.0
 z_val = 45
+xy_speed = 3.0
 
 
 def move_forward():
-    chassis.move(x=x_val, y=0, z=0).wait_for_completed()
+    chassis.move(x=x_val, y=0, z=0, xy_speed=xy_speed).wait_for_completed()
 
 def move_back():
-    chassis.move(x=-1 * x_val, y=0, z=0).wait_for_completed()
-
+    chassis.move(x=-x_val, y=0, z=0, xy_speed=xy_speed).wait_for_completed()
 def move_left():
-    chassis.move(x=x_val, y=0, z=-1 * z_val).wait_for_completed()
+    chassis.move(x=x_val, y=0, z=-z_val, xy_speed=xy_speed).wait_for_completed()
 
 def move_right():
-    chassis.move(x=x_val, y=0, z=z_val).wait_for_completed()
+    chassis.move(x=x_val, y=0, z=z_val, xy_speed=xy_speed).wait_for_completed()
     
 
 if __name__ == '__main__':
@@ -32,7 +32,7 @@ if __name__ == '__main__':
             elif key == 'a':
                 move_left()
             elif key =='s':
-                move_forward()
+                move_back()
             elif key == 'd':
                 move_right()
 
